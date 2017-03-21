@@ -18,7 +18,7 @@ tsa_ending = re.compile('(.+)(цца|ццо)$', re.U)
 vobsch_reg = re.compile('в(о|а){1,2}(б|п)щ{1,2}(е|и)м', re.U)
 potomy_reg = re.compile('п(о|а)т(о|а)му\s?(ч|ш)т(о|а)', re.U)
 
-frequent_intentional_mistakes = {'собстно': 'собственно', 'собсна': 'собственно', "многабуков": "много букв",
+frequent_intentional_mistakes = {'собстно': 'собственно', 'собсна': 'собственно', "многабуков": "много букв", 'собссно': 'собственно',
                                  "седня": "сегодня", "естесно": "естественно", "ессно": "естественно",
                                  "естессно": "естественно", "ничо": "ничего", "неоч": "не очень", "щаз": "сейчас",
                                  "какбы": "как бы", "какбе": "как бы", "скока": "сколько", "нащщот": "насчет",
@@ -169,7 +169,7 @@ def preprocess_text(text, punct_include=False):
     text = clean_text(text)
 
     words = tokenize(text, punct_include)
-    words = numbers2letters(words)
+    # words = numbers2letters(words)
     words = correct_intentional_misspelling(words)
     words = correct_hyphens_spaces(words)
 
